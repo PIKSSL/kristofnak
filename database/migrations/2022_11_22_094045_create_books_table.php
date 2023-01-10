@@ -25,6 +25,7 @@ return new class extends Migration
         Book::create(['author'=>'Bohumil Hrabal', 'title'=>'Gyengéd barbárok']);
         Book::create(['author'=>'J.R.R.Tolkien', 'title'=>'Hobbit']);
         Book::create(['author'=>'Kaczur Sándor', 'title'=>'Programozás Java nyelven']);
+        Book::create(['author'=>'Kaczur Sándor', 'title'=>'Programozás Java nyelven2']);
     }
 
     /**

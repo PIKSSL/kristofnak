@@ -23,6 +23,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+
         Copy::create(['book_id'=>2, 'publication' =>1996, 'status'=>1]);
         Copy::create(['book_id'=>3, 'status'=>1]);
         Copy::create(['book_id'=>3, 'publication' =>2011]);

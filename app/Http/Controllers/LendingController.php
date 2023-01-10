@@ -46,6 +46,7 @@ class LendingController extends Controller
         $lending->notice = $request->notice;
         $lending->save();
     }
+    
 
     public function userLendingsList()
     {
@@ -68,5 +69,13 @@ class LendingController extends Controller
         $users = User::all();
         $copies = Copy::all();
         return view('lending.new', ['users' => $users, 'copies' => $copies]);
+    }
+
+    public function bringBack($copy_id, $start){
+        $user = Auth::user();
+        $lending = LendingController::show($user->id, $copy_id, $start);
+        $lending->end = date(now());
+        //DB::table('copies')->where('copy_id',$copy_id)->update(['status'=>0]);
+        $lending->save();
     }
 }

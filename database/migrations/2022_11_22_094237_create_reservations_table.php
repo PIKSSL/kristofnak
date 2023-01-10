@@ -18,12 +18,15 @@ return new class extends Migration
             $table->primary(['user_id', 'book_id', 'start']);   
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('book_id')->references('book_id')->on('books');
-            $table->date("start");
+            $table->datetime("start");
             $table->boolean("message")->default(0);   
+            $table->date('message_date')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
 
         Reservation::create(['user_id'=>1,'book_id'=>2,'start'=>'2021-02-11']);
+        Reservation::create(['user_id'=>2,'book_id'=>1,'start'=>'2021-01-11','status'=>1]);
     }
 
     /**

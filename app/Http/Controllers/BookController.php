@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -41,4 +42,27 @@ class BookController extends Controller
         $copies = Book::with('copy_c')->where('title','=', $title)->get();
         return $copies;
     }
+    public function bookabc(){
+        $book = DB::table('books as b')
+        ->select('book_id','author','title')
+        ->orderBy('author')
+        ->get();
+        return $book;    }
+
+    public function morea($number){
+        $books =DB::table('books as b')
+        ->select('author','count(*)')
+        ->groupBy('author')
+        ->having('count(*)','=>',$number)
+        ->get();
+        return $books;
+    }
+    public function ba(){
+        $ba =DB::table('books as b')
+        ->select('author')
+        ->where('author','like','B%')
+        ->get();
+        return $ba;
+    }
+    
 }
